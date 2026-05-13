@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Đơn Hàng - The Little Garden</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2d4739;
+            --bg: #f5f7f6;
+            --white: #ffffff;
+        }
+        body { font-family: 'Outfit', sans-serif; background: var(--bg); margin: 0; padding: 2rem; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+        .card { background: var(--white); padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 1.5rem; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        th, td { text-align: left; padding: 1rem; border-bottom: 1px solid #eee; }
+        th { background: #fafafa; color: var(--primary); font-weight: 700; }
+        .badge { background: #e8f5e9; color: #2e7d32; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; }
+        .items-list { font-size: 0.9rem; color: #666; }
+        .clear-btn { background: #ff5252; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Quản Lý Đơn Hàng</h1>
+            <div>
+                <button class="clear-btn" onclick="clearOrders()">Xóa tất cả</button>
+                <a href="index.html" style="margin-left: 1rem; color: var(--primary);">Quay lại web</a>
+            </div>
+        </div>
+
+        <div id="orderList">
+            <!-- Orders will be injected here -->
+        </div>
+        
+        <div style="text-align: center; margin-top: 4rem; opacity: 0.5; font-size: 0.9rem;">
+            Trang web được thiết kế bởi Đào Việt Tuấn
+        </div>
+    </div>
+
+    <script>
+        function renderOrders() {
+            const orders = JSON.parse(localStorage.getItem('tlg_orders') || '[]');
+            const container = document.getElementById('orderList');
+
+            if (orders.length === 0) {
+                container.innerHTML = '<div class="card" style="text-align: center;">Chưa có đơn hàng nào.</div>';
+                return;
+            }
+
+            container.innerHTML = orders.reverse().map(order => `
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                        <strong>Đơn hàng #${order.id}</strong>
+                        <span class="badge">Hoàn thành</span>
+                    </div>
+                    <p><strong>Khách hàng:</strong> ${order.customer.name} - ${order.customer.phone}</p>
+                    <p><strong>Địa chỉ:</strong> ${order.customer.address}</p>
+                    <p><strong>Ngày đặt:</strong> ${order.date}</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sản phẩm</th>
+                                <th>Số lượng</th>
+                                <th>Giá</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${order.items.map(item => `
+                                <tr>
+                                    <td>${item.name}</td>
+                                    <td>${item.quantity}</td>
+                                    <td>${item.price.toLocaleString('vi-VN')}đ</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                    <div style="text-align: right; margin-top: 1rem; font-size: 1.2rem; font-weight: 700; color: #d4a373;">
+                        Tổng cộng: ${order.total.toLocaleString('vi-VN')}đ
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function clearOrders() {
+            if (confirm('Bạn có chắc muốn xóa tất cả đơn hàng?')) {
+                localStorage.removeItem('tlg_orders');
+                renderOrders();
+            }
+        }
+
+        renderOrders();
+    </script>
+</body>
+</html>

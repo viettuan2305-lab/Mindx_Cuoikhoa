@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Little Garden - Tiệm Gốm & Cây Xanh</title>
+    <meta name="description" content="Khám phá không gian xanh và những tác phẩm gốm thủ công tinh xảo tại The Little Garden.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playfair+Display:wght@700;900&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="brand">The little garden</div>
+        <div class="search-container" style="flex-grow: 1; max-width: 400px; margin: 0 2rem;">
+            <input type="text" id="searchInput" placeholder="Tìm kiếm cây, bình gốm..." style="width: 100%; padding: 0.8rem 1.5rem; border-radius: 50px; border: 1px solid rgba(0,0,0,0.1); outline: none;">
+        </div>
+        <div class="links">
+            <a href="#home">Trang Chủ</a>
+            <a href="#products">Sản Phẩm</a>
+            <a href="#about">Về Chúng Tôi</a>
+            <a href="#contact">Liên Hệ</a>
+        </div>
+        <div class="nav-actions" style="display: flex; gap: 1rem; align-items: center;">
+            <div id="userProfile" class="user-profile" style="display: none;">
+                <span id="userNameDisplay">Chào, Khách</span>
+                <button onclick="logout()" class="logout-btn" style="background: none; border: none; color: var(--primary); cursor: pointer; font-size: 0.8rem; text-decoration: underline;">Đăng xuất</button>
+            </div>
+            <button class="login-trigger" id="loginOpenBtn" style="background: none; border: 1px solid var(--primary); color: var(--primary); padding: 0.7rem 1.2rem; border-radius: 50px; cursor: pointer; font-weight: 500; transition: var(--transition);">
+                Đăng Nhập
+            </button>
+            <button class="cart-btn" id="cartOpenBtn">
+                Giỏ Hàng <span id="cartCount">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Mang Thiên Nhiên Vào Tổ Ấm</h1>
+            <p>Hành trình tìm lại sự bình yên qua từng chậu cây xanh và những tác phẩm gốm thủ công mộc mạc.</p>
+            <a href="#products" class="cta-btn">Khám phá ngay</a>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <div class="section-header">
+            <h2>Bộ Sưu Tập Nổi Bật</h2>
+            <p>Những sản phẩm được tuyển chọn kỹ lưỡng dành riêng cho không gian của bạn</p>
+            <div class="filter-bar" style="margin-top: 2rem; display: flex; justify-content: center; gap: 1rem;">
+                <button class="filter-btn active" onclick="filterProducts('all')">Tất cả</button>
+                <button class="filter-btn" onclick="filterProducts('Cây xanh')">Cây xanh</button>
+                <button class="filter-btn" onclick="filterProducts('Gốm sứ')">Gốm sứ</button>
+            </div>
+        </div>
+        <div class="product-grid" id="productGrid">
+            <!-- Products will be injected by JS -->
+        </div>
+    </section>
+
+    <section class="about" id="about" style="padding: 8rem 10%; background: var(--white);">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+            <img src="assets/hero.png" alt="Về chúng tôi" style="width: 100%; border-radius: 30px; box-shadow: var(--shadow);">
+            <div>
+                <h2 style="font-size: 3rem; margin-bottom: 2rem;">Về The Little Garden</h2>
+                <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">Bắt đầu từ tình yêu với những mầm xanh và sự mộc mạc của đất sét, The Little Garden là nơi chúng tôi gửi gắm những tâm tình vào từng chậu cây, chén gốm.</p>
+                <p style="margin-bottom: 2rem; opacity: 0.8;">Tại đây, mỗi sản phẩm đều kể một câu chuyện riêng về sự tĩnh lặng và nét đẹp thủ công. Chúng tôi tin rằng một góc xanh nhỏ trong nhà có thể mang lại nguồn năng lượng tích cực vô tận.</p>
+                <a href="#contact" class="cta-btn" style="padding: 1rem 2rem; background: var(--primary);">Liên hệ tư vấn</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter" style="padding: 6rem 10%; background: var(--accent-light); text-align: center;">
+        <h2 style="margin-bottom: 1rem;">Nhận Cảm Hứng Xanh</h2>
+        <p style="margin-bottom: 2.5rem; opacity: 0.8;">Đăng ký để nhận thông tin về các bộ sưu tập gốm mới nhất và mẹo chăm sóc cây xanh.</p>
+        <div style="max-width: 500px; margin: 0 auto; display: flex; gap: 1rem;">
+            <input type="email" placeholder="Email của bạn..." style="flex-grow: 1; padding: 1.2rem 2rem; border-radius: 50px; border: none; outline: none;">
+            <button class="cta-btn" style="border: none; cursor: pointer;">Đăng ký</button>
+        </div>
+    </section>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Giỏ hàng của bạn</h2>
+            <span class="close-cart" id="cartCloseBtn">&times;</span>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be injected by JS -->
+        </div>
+        <div class="cart-total">
+            <div style="display: flex; justify-content: space-between; font-size: 1.5rem; font-weight: 700;">
+                <span>Tổng cộng:</span>
+                <span id="totalPrice">0đ</span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">Thanh toán ngay</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-content">
+            <span class="close-cart" style="position: absolute; right: 2rem; top: 1.5rem;" onclick="closeCheckout()">&times;</span>
+            <h2 style="margin-bottom: 2rem;">Thông Tin Thanh Toán</h2>
+            <form id="checkoutForm">
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Họ và Tên</label>
+                    <input type="text" required placeholder="Nguyễn Văn A" style="width: 100%; padding: 1rem; border-radius: 12px; border: 1px solid #ddd;">
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Số Điện Thoại</label>
+                    <input type="tel" required placeholder="0901234567" style="width: 100%; padding: 1rem; border-radius: 12px; border: 1px solid #ddd;">
+                </div>
+                <div style="margin-bottom: 2rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Địa Chỉ Giao Hàng</label>
+                    <textarea required placeholder="Số nhà, tên đường, quận/huyện..." style="width: 100%; padding: 1rem; border-radius: 12px; border: 1px solid #ddd; height: 100px;"></textarea>
+                </div>
+                <button type="submit" class="checkout-btn">Xác Nhận Đặt Hàng</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-content" style="max-width: 400px;">
+            <span class="close-cart" style="position: absolute; right: 2rem; top: 1.5rem;" onclick="closeLogin()">&times;</span>
+            <div id="loginFormContainer">
+                <h2 style="margin-bottom: 2rem; text-align: center;">Đăng Nhập</h2>
+                <form id="loginForm">
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Email</label>
+                        <input type="email" id="loginEmail" required placeholder="example@gmail.com" style="width: 100%; padding: 1rem; border-radius: 12px; border: 1px solid #ddd;">
+                    </div>
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Mật khẩu</label>
+                        <input type="password" id="loginPassword" required placeholder="••••••••" style="width: 100%; padding: 1rem; border-radius: 12px; border: 1px solid #ddd;">
+                    </div>
+                    <button type="submit" class="checkout-btn" style="width: 100%;">Đăng Nhập</button>
+                    <p style="margin-top: 1.5rem; text-align: center; font-size: 0.9rem;">
+                        Chưa có tài khoản? <a href="#" onclick="switchAuthMode('register')" style="color: var(--primary); font-weight: 600; text-decoration: none;">Đăng ký ngay</a>
+                    </p>
+                </form>
+            </div>
+            <div id="registerFormContainer" style="display: none;">
+                <h2 style="margin-bottom: 2rem; text-align: center;">Đăng Ký</h2>
+                <form id="registerForm">
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Họ và Tên</label>
+                        <input type="text" id="regName" required placeholder="Nguyễn Văn A" style="width: 100%; padding: 1rem; border-radius: 12px; border: 1px solid #ddd;">
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Email</label>
+                        <input type="email" id="regEmail" required placeholder="example@gmail.com" style="width: 100%; padding: 1rem; border-radius: 12px; border: 1px solid #ddd;">
+                    </div>
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Mật khẩu</label>
+                        <input type="password" id="regPassword" required placeholder="••••••••" style="width: 100%; padding: 1rem; border-radius: 12px; border: 1px solid #ddd;">
+                    </div>
+                    <button type="submit" class="checkout-btn" style="width: 100%;">Đăng Ký</button>
+                    <p style="margin-top: 1.5rem; text-align: center; font-size: 0.9rem;">
+                        Đã có tài khoản? <a href="#" onclick="switchAuthMode('login')" style="color: var(--primary); font-weight: 600; text-decoration: none;">Đăng nhập</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://zalo.me/0879254769" class="fab" target="_blank">
+        Zalo
+    </a>
+
+    <footer id="contact">
+        <div style="grid-column: 1 / -1; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 2rem; text-align: center; font-size: 0.9rem; opacity: 0.8; color: var(--text);">
+            Trang web được thiết kế bởi Đào Việt Tuấn
+        </div>
+        <div>
+            <div class="brand" style="color: white; margin-bottom: 1rem;">The Little Garden</div>
+            <p>Little Garden - Nơi kết nối tâm hồn và thiên nhiên.</p>
+        </div>
+        <div>
+            <h4>Liên Hệ</h4>
+            <p>Địa chỉ: Hà Nội, Việt Nam</p>
+            <p>Hotline: 087 925 4769</p>
+            <p>Email: littlegarden2305@gmail.com</p>
+        </div>
+        <div>
+            <h4>Theo Dõi</h4>
+            <p><a href="https://www.facebook.com/tiemgomvacayxanh" style="color: white; text-decoration: none;">Facebook</a></p>
+            <p><a href="https://www.instagram.com/the.little.garden/" style="color: white; text-decoration: none;">Instagram</a></p>
+        </div>
+        <div>
+            <h4>Quản Trị</h4>
+            <p><a href="admin.html" style="color: white; text-decoration: none;">Xem đơn hàng</a></p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
