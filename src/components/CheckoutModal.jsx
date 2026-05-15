@@ -32,7 +32,7 @@ const CheckoutModal = ({ isOpen, onClose, onSubmit }) => {
                 <CheckCircle className="w-4 h-4" />
                 Step 2 of 2
               </div>
-              <h2 className="text-4xl font-black text-text-main">Thông Tin Thanh Toán</h2>
+              <h2 className="text-4xl font-normal text-primary" style={{ fontFamily: 'Lora, serif' }}>Thông Tin Thanh Toán</h2>
               <p className="text-text-muted mt-2">Chúng tôi cần một vài thông tin để giao những mầm xanh đến bạn.</p>
             </div>
 
@@ -91,9 +91,9 @@ const CheckoutModal = ({ isOpen, onClose, onSubmit }) => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="submit" 
-                  className="w-full py-5 bg-primary text-white rounded-2xl font-black text-lg hover:bg-primary-dark transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-3 cursor-pointer"
+                  className="w-full py-4 bg-accent text-white rounded-full font-bold text-lg hover:bg-accent/90 transition-all shadow-sm flex items-center justify-center gap-3 cursor-pointer"
                 >
-                  Xác Nhận Đặt Hàng <ArrowRight className="w-6 h-6" />
+                  Xác Nhận Đặt Hàng <ArrowRight className="w-5 h-5" />
                 </motion.button>
                 <p className="text-center text-xs text-text-muted mt-6">
                   Bằng cách nhấn xác nhận, bạn đồng ý với các <span className="underline cursor-pointer">Điều khoản dịch vụ</span> của chúng tôi.

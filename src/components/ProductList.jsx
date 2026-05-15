@@ -10,12 +10,12 @@ const ProductList = ({ products, onAddToCart }) => {
   );
 
   return (
-    <section id="products" className="py-24 px-[10%] bg-bg-main relative">
+    <section id="products" className="py-24 px-[10%] relative">
       
       <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-black mb-6 text-[#2d4a22]">Bộ Sưu Tập Nổi Bật</h2>
-        <p className="text-[#4a5d23] text-lg max-w-2xl mx-auto font-medium">
-          Sự kết hợp hoàn hảo giữa những mầm xanh tươi mát và đồ gốm mộc mạc, mang linh hồn thiên nhiên vào góc nhỏ của bạn.
+        <h2 className="text-5xl font-normal mb-6 text-primary" style={{ fontFamily: 'Lora, serif' }}>Bộ Sưu Tập Nổi Bật</h2>
+        <p className="text-text-main text-lg max-w-2xl mx-auto">
+          Những sản phẩm được tuyển chọn kỹ lưỡng dành riêng cho không gian của bạn
         </p>
         
         <div className="flex justify-center items-center gap-4 mt-10">
@@ -23,10 +23,10 @@ const ProductList = ({ products, onAddToCart }) => {
               <button
                 key={category}
                 onClick={() => setActiveFilter(category)}
-                className={`px-8 py-2.5 rounded-full text-sm font-bold transition-all cursor-pointer border-2 ${
+                className={`px-8 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer border ${
                   activeFilter === category 
-                  ? 'bg-[#4caf50] text-white border-[#4caf50] shadow-md shadow-green-500/20' 
-                  : 'bg-transparent text-[#4a5d23] border-[#e8f5e9] hover:border-[#81c784] hover:text-[#2d4a22] hover:bg-[#f2f7ec]'
+                  ? 'bg-accent text-white border-accent shadow-md' 
+                  : 'bg-transparent text-text-muted border-[#d1c8c1] hover:border-accent hover:text-accent'
                 }`}
               >
                 {category === 'all' ? 'Tất cả' : category}

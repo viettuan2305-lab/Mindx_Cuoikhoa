@@ -10,15 +10,15 @@ const LoginModal = ({ isOpen, onClose, onLogin, onRegister }) => {
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-[300] flex items-center justify-center p-6">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="absolute inset-0 bg-black/60 backdrop-blur-md"
             onClick={onClose}
           ></motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -26,7 +26,7 @@ const LoginModal = ({ isOpen, onClose, onLogin, onRegister }) => {
           >
             {/* Left side: Artistic */}
             <div className="hidden md:flex w-[40%] bg-primary relative p-12 flex-col justify-between overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1545239351-ef35f43d514b?auto=format&fit=crop&q=80&w=800')] opacity-20 mix-blend-overlay object-cover"></div>
+              <div className="absolute top-0 left-0 w-full h-full bg-[url('https://res.cloudinary.com/dsbgb5ite/image/upload/v1778863916/xuongrong2_os7yft.jpg')] opacity-20 mix-blend-overlay object-cover"></div>
               <div className="relative z-10">
                 <div className="text-2xl font-black text-white brand">The Little Garden</div>
               </div>
@@ -40,9 +40,9 @@ const LoginModal = ({ isOpen, onClose, onLogin, onRegister }) => {
               <button onClick={onClose} className="absolute top-8 right-10 p-2 hover:bg-gray-50 rounded-full transition-colors cursor-pointer">
                 <X className="w-6 h-6 text-text-muted" />
               </button>
-              
+
               <div className="mb-10">
-                <h2 className="text-3xl font-black text-text-main mb-2">
+                <h2 className="text-4xl font-normal text-primary mb-2" style={{ fontFamily: 'Lora, serif' }}>
                   {mode === 'login' ? 'Chào mừng trở lại' : 'Tạo tài khoản mới'}
                 </h2>
                 <p className="text-text-muted">Vui lòng nhập thông tin của bạn.</p>
@@ -56,46 +56,46 @@ const LoginModal = ({ isOpen, onClose, onLogin, onRegister }) => {
                 {mode === 'register' && (
                   <div className="relative">
                     <User className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
-                    <input 
-                      type="text" 
-                      required 
-                      placeholder="Họ và Tên" 
+                    <input
+                      type="text"
+                      required
+                      placeholder="Họ và Tên"
                       className="w-full pl-14 pr-6 py-4 rounded-2xl border border-gray-100 bg-gray-50 focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all font-medium"
                       value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     />
                   </div>
                 )}
                 <div className="relative">
                   <Mail className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
-                  <input 
-                    type="email" 
-                    required 
-                    placeholder="Địa chỉ Email" 
+                  <input
+                    type="email"
+                    required
+                    placeholder="Địa chỉ Email"
                     className="w-full pl-14 pr-6 py-4 rounded-2xl border border-gray-100 bg-gray-50 focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all font-medium"
                     value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   />
                 </div>
                 <div className="relative">
                   <Lock className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
-                  <input 
-                    type="password" 
-                    required 
-                    placeholder="Mật khẩu" 
+                  <input
+                    type="password"
+                    required
+                    placeholder="Mật khẩu"
                     className="w-full pl-14 pr-6 py-4 rounded-2xl border border-gray-100 bg-gray-50 focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all font-medium"
                     value={formData.password}
-                    onChange={(e) => setFormData({...formData, password: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                   />
                 </div>
-                
-                <motion.button 
+
+                <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  type="submit" 
-                  className="w-full py-5 bg-primary text-white rounded-2xl font-black text-lg hover:bg-primary-dark transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-3 cursor-pointer"
+                  type="submit"
+                  className="w-full py-4 bg-accent text-white rounded-full font-bold text-lg hover:bg-accent/90 transition-all shadow-sm flex items-center justify-center gap-3 cursor-pointer"
                 >
-                  {mode === 'login' ? 'Đăng Nhập' : 'Đăng Ký'} <ArrowRight className="w-6 h-6" />
+                  {mode === 'login' ? 'Đăng Nhập' : 'Đăng Ký'} <ArrowRight className="w-5 h-5" />
                 </motion.button>
               </form>
 

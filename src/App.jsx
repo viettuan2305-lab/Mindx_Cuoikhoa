@@ -12,11 +12,14 @@ import CheckoutModal from './components/CheckoutModal';
 
 const INITIAL_PRODUCTS = [
   { id: 1, name: "Chậu Sen Đá Cầm Tay", price: 150000, image: "https://res.cloudinary.com/dsbgb5ite/image/upload/v1778781697/senda_kkpzzx.jpg", category: "Cây xanh" },
-  { id: 2, name: "Cây Cẩm Nhung", price: 25000, image: "https://res.cloudinary.com/dsbgb5ite/image/upload/v1778781116/camnhung_h4mcsh.jpg", category: "Gốm sứ" },
+  { id: 2, name: "Cây Cẩm Nhung", price: 25000, image: "https://res.cloudinary.com/dsbgb5ite/image/upload/v1778781116/camnhung_h4mcsh.jpg", category: "Cây xanh" },
   { id: 3, name: "Cây Fittonia Cẩm Nhung", price: 50000, image: "https://res.cloudinary.com/dsbgb5ite/image/upload/v1778781304/camnhungFittonia_mgt9y1.jpg", category: "Cây xanh" },
   { id: 4, name: "Gốm Men Lam", price: 100000, image: "https://res.cloudinary.com/dsbgb5ite/image/upload/v1778781432/gom_qqjgll.jpg", category: "Gốm sứ" },
   { id: 5, name: "Cây Xương Rồng Tai Thỏ", price: 75000, image: "https://res.cloudinary.com/dsbgb5ite/image/upload/v1778781583/xuongrongtaitho_juwlyh.jpg", category: "Cây xanh" },
-  { id: 6, name: "Tách Trà Gốm Mộc", price: 120000, image: "https://res.cloudinary.com/dsbgb5ite/image/upload/v1778781758/tachtra_s69kmc.jpg", category: "Gốm sứ" }
+  { id: 6, name: "Tách Trà Gốm Mộc", price: 120000, image: "https://res.cloudinary.com/dsbgb5ite/image/upload/v1778781758/tachtra_s69kmc.jpg", category: "Gốm sứ" },
+  { id: 7, name: "Nồi Đất", price: 150000, image: "https://res.cloudinary.com/dsbgb5ite/image/upload/v1778864954/gom2_o6dbo6.jpg", category: "Gốm sứ" },
+  { id: 8, name: "Khay Có Tay Cầm", price: 45000, image: "https://res.cloudinary.com/dsbgb5ite/image/upload/v1778865101/khaycotaycam_anb0ym.jpg", category: "Gốm sứ" },
+  { id: 9, name: "Cây Môn Quan Âm", price: 15000, image: "https://res.cloudinary.com/dsbgb5ite/image/upload/v1778865279/caymonquanam_izl8i8.jpg", category: "Cây xanh" },
 ];
 
 const App = () => {
@@ -106,7 +109,11 @@ const App = () => {
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative bg-bg-main overflow-hidden text-text-main">
+      {/* Premium Ambient Background Orbs */}
+      <div className="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-[#2C4A3B]/5 blur-[120px] pointer-events-none -z-10"></div>
+      <div className="fixed bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-[#B88E5F]/5 blur-[150px] pointer-events-none -z-10"></div>
+      <div className="fixed top-[40%] left-[60%] w-[40vw] h-[40vw] rounded-full bg-primary-light/5 blur-[100px] pointer-events-none -z-10"></div>
       <Navbar
         cartCount={cartCount}
         onCartOpen={() => setIsCartOpen(true)}

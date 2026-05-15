@@ -29,7 +29,7 @@ const CartSidebar = ({ isOpen, onClose, cart, onRemove, onCheckout }) => {
             <div className="p-10 border-b border-gray-50 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <ShoppingBag className="w-6 h-6 text-primary" />
-                <h2 className="text-2xl font-black">Giỏ hàng</h2>
+                <h2 className="text-3xl font-normal text-primary" style={{ fontFamily: 'Lora, serif' }}>Giỏ hàng</h2>
                 <span className="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-black rounded-full uppercase tracking-widest">
                   {cart.length} món
                 </span>
@@ -115,7 +115,7 @@ const CartSidebar = ({ isOpen, onClose, cart, onRemove, onCheckout }) => {
                 whileTap={{ scale: 0.98 }}
                 onClick={onCheckout}
                 disabled={cart.length === 0}
-                className="w-full py-5 bg-primary text-white rounded-full font-black text-lg hover:bg-primary-dark transition-all shadow-xl shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-3"
+                className="w-full py-4 bg-accent text-white rounded-full font-bold text-lg hover:bg-accent/90 transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-3"
               >
                 Thanh toán <ArrowRight className="w-6 h-6" />
               </motion.button>
